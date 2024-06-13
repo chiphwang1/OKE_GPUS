@@ -1,11 +1,33 @@
 # OKE_GPUS
-# oke-virtual-node-terraform
+# Nvidia Device Plugin wiht OCI Container Engine for Kubernetes (OKE)
 
 
 ## Introduction
 
+This tutorial will step through the process of how to use GPUs on OKE using the Nvidia Device Plugin for Kubernetes.
 
-This Terraform stack facilitates the deployment of an Oracle Container Engine for Kubernetes (OKE) Virtual Nodes cluster in your tenancy. This stack will automatically provision the necessary network infrastructure components such as Virtual Cloud Network (VCN), subnets, Internet Gateway, NAT Gateway, and security rules. Additionally, you can deploy the relevant policies in the root compartment of your tenancy to enable operations of OKE Virtual Nodes and also includes the option to deploy a metrics server, ingress controller and the Kubernetes dashboard to the cluster.
+### Available OKE GPU shapes.
+
+Virtual Machine (VM) shapes
+VM.GPU2.1
+VM.GPU3.1
+VM.GPU3.2
+VM.GPU3.4
+VM.GPU3.A10.1
+VM.GPU3.A10.2
+
+Baremetal (BM) shapes
+BM.GPU2.2
+BM.GPU3.8
+VM.GPU4.8
+VM.GPU3.A100
+VM.GPU3.A10.1
+VM.GPU3.A10.2
+
+### Nvidia Device Plugin
+The NVIDIA Device Plugin is a tool that helps manage GPU resources in a Kubernetes cluster. It automatically reveals the number of GPUs in each node and makes them allocatable by the Kubernetes scheduler. With the NVIDIA Device Plugin, you don't have to manually set up GPU resources on each node. It also monitors GPU health, which helps Kubernetes maintain reliability and stability for tasks that need GPUs. Moreover, the Plugin allows multiple pods to share GPUs, which is vital when GPUs are scarce and expensive.
+
+
 
 
 ## Pre-requisites
