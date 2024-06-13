@@ -1,5 +1,5 @@
 # OKE_GPUS
-# Nvidia Device Plugin wiht OCI Container Engine for Kubernetes (OKE)
+# Nvidia Device Plugin with OCI Container Engine for Kubernetes (OKE)
 
 
 ## Introduction
@@ -26,6 +26,19 @@ VM.GPU3.A10.2
 
 ### Nvidia Device Plugin
 The NVIDIA Device Plugin is a tool that helps manage GPU resources in a Kubernetes cluster. It automatically reveals the number of GPUs in each node and makes them allocatable by the Kubernetes scheduler. With the NVIDIA Device Plugin, you don't have to manually set up GPU resources on each node. It also monitors GPU health, which helps Kubernetes maintain reliability and stability for tasks that need GPUs. Moreover, the Plugin allows multiple pods to share GPUs, which is vital when GPUs are scarce and expensive.
+
+### Pre-requisites for 
+
+Ensure that your GPU nodes have the necessary NVIDIA drivers (version ~= 384.81) installed.
+ optional Install the nvidia-container-toolkit (version >= 1.7.0) on each GPU node.
+Configure the nvidia-container-runtime as the default runtime for Docker or containerd.
+Kubernetes version >= 1.10
+If using OKE the driver should be installed handled for you by default when using GPU nodes
+
+    nvidia-smi (installed)
+    modinfo nvidia | grep ^version
+    sudo dmesg | grep 'loading NVIDIA'
+
 
 
 
