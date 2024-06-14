@@ -35,12 +35,32 @@ Configure the nvidia-container-runtime as the default runtime for Docker or cont
 Kubernetes version >= 1.10
 If using OKE the driver should be installed handled for you by default when using GPU nodes
 
+Commands to verify
+
     nvidia-smi (installed)
     modinfo nvidia | grep ^version
     sudo dmesg | grep 'loading NVIDIA'
 
+https://github.com/NVIDIA/k8s-device-plugin#deployment-via-helm
 
 
+eaxmple to assign pod to GPU
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gpu-pod
+spec:
+  containers:
+    - name: cuda-container
+      image: nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda10.2
+      resources:
+        limits:
+          nvidia.com/gpu: 1 # requesting 1 GPU
+  tolerations:
+  - key: nvidia.com/gpu
+    operator: Exists
+    effect: NoSchedule
 
 
 ## Pre-requisites
